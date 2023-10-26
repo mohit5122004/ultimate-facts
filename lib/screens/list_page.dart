@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ultimate_fact_app/database/database.dart';
 import 'package:ultimate_fact_app/screens/facts_page.dart';
-import 'package:ultimate_fact_app/screens/facts_topic.dart';
-import 'package:ultimate_fact_app/screens/home_screen.dart';
+import 'package:ultimate_fact_app/screens/topic_page.dart';
+import 'package:ultimate_fact_app/screens/home_page.dart';
 
 class facts_Listview extends StatefulWidget {
   facts_Listview({
@@ -155,6 +155,92 @@ class _facts_ListviewState extends State<facts_Listview> {
   }
 }
 
+
+
+class icons_bar extends StatefulWidget {
+  icons_bar({
+    required this.dearcount,
+    // required this.onhear_tap,
+  });
+
+  int dearcount = 0;
+  // VoidCallback onhear_tap;
+  @override
+  State<icons_bar> createState() => _icons_barState();
+}
+
+class _icons_barState extends State<icons_bar> {
+  int newlike = 100;
+  @override
+  Widget build(
+    BuildContext context,
+  ) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            IconButton(
+                onPressed: () {
+                  setState(() {
+                    heartap = !heartap;
+                    // heartap == true ? newlike++ : newlike--;
+                    for (int i = 0; i < home_Screen_facts_data.length; i++) {
+                      heartap == true
+                          ? home_Screen_facts_data[i]['like']++
+                          : home_Screen_facts_data[i]['like']--;
+                    }
+
+                    // widget.onhear_tap;
+                  });
+                },
+                splashRadius: 10,
+                icon: Icon(
+                  heartap == true
+                      ? CupertinoIcons.heart_fill
+                      : CupertinoIcons.heart,
+                  fill: 1,
+                  color: heartap == true ? heartcolor : uicolor.icongrey,
+                  size: 30,
+                )),
+            Text(
+              home_Screen_facts_data[widget.dearcount]['like'].toString(),
+              style: TextStyle(
+                  fontSize: 22,
+                  color: uicolor.textgrey,
+                  fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  CupertinoIcons.play_circle,
+                  color: Colors.green.shade600,
+                  size: 28,
+                )),
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  CupertinoIcons.bookmark,
+                  color: uicolor.icongrey,
+                  size: 28,
+                )),
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  CupertinoIcons.paperplane,
+                  color: uicolor.icongrey,
+                  size: 28,
+                )),
+          ],
+        ),
+      ],
+    );
+  }
+}
 
 
 //  heartcount: index,

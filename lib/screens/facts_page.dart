@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ultimate_fact_app/database/database.dart';
-import 'package:ultimate_fact_app/screens/facts_list.dart';
-import 'package:ultimate_fact_app/screens/home_screen.dart';
+import 'package:ultimate_fact_app/screens/list_page.dart';
+import 'package:ultimate_fact_app/screens/home_page.dart';
 
 var runners;
 

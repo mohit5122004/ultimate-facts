@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:ultimate_fact_app/screens/facts_topic.dart';
+import 'package:ultimate_fact_app/screens/topic_page.dart';
 // import 'package:ultimate_fact_app/home_page/home_screen.dart';
 import 'package:ultimate_fact_app/splash_screen/splash_screen.dart';
 
