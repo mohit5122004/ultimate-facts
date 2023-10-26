@@ -134,15 +134,15 @@ List topic_image = [
   {'image': 'assets/topic/uk.jpg', 'title': 'Uinited Kingdom'},
 ];
 
-List<dynamic> fact_data = [
+List<Map<String, dynamic>> fact_data = [
   {
-    'kids': {
+    'kids': [
       {
         "title": "Baby Growth",
         "subtitle": "A baby cannot taste salt until it is four months old.",
         'image': 'assets/kids/three.png',
         "discription":
-            '''Infants’ ability to detect salt taste is mainly measured by the quantity the infant ingests, sucking patterns, and facial expression in response to ingestion of water solutions with different concentrations of salt. Because of the nature of these measurements, it is hard to distinguish between infants’ ability to detect sodium and infants’ preference for, or liking of, sodium.
+            '''checkerInfants’ ability to detect salt taste is mainly measured by the quantity the infant ingests, sucking patterns, and facial expression in response to ingestion of water solutions with different concentrations of salt. Because of the nature of these measurements, it is hard to distinguish between infants’ ability to detect sodium and infants’ preference for, or liking of, sodium.
 
 Newborns have a biological need for sodium, which brings up the question of why newborns are not able to show a preferential response to salty taste as they show for sweet taste. The lack of a salt taste response might have an evolutionary reason. Although there is a need for sodium at birth, the first food the infant naturally encounters is breastmilk, which is dominated by the sweet taste and contains a sufficient concentration of sodium for the baby to thrive. Children have an inborn preference for sweet taste, which would lead to a natural acceptance and consumption of breastmilk. From an evolutionary point of view, this makes an inborn acceptance of salt taste not needed per se.
 
@@ -242,7 +242,7 @@ Advances come fast and furiously by 18 months, and while children will still nee
     Often newborns smile in their sleep. But starting between 6 and 8 weeks of life, babies develop a "social smile" an intentional gesture of warmth meant just for you. This is an important milestone. Your pediatrician asks you whether you've seen your baby's grin at a two-month well-child visit.''',
         "like": 435
       },
-    },
+    ],
     'brain': [
       {
         "title": "Brain Actions",

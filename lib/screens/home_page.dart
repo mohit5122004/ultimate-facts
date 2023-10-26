@@ -1,54 +1,69 @@
+// ignore_for_file: must_be_immutable
+
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ultimate_fact_app/database/database.dart';
+import 'package:ultimate_fact_app/screens/bookmark_page.dart';
 import 'package:ultimate_fact_app/screens/facts_page.dart';
-import 'package:ultimate_fact_app/screens/facts_topic.dart';
-import 'package:ultimate_fact_app/screens/home_screen.dart';
+import 'package:ultimate_fact_app/screens/list_page.dart';
+import 'package:ultimate_fact_app/screens/settings_page.dart';
+// import 'package:ultimate_fact_app/database/database.dart';
+// import 'package:ultimate_fact_app/screens/list_page.dart';
+import 'package:ultimate_fact_app/screens/topic_page.dart';
 
-class facts_Listview extends StatefulWidget {
-  facts_Listview({
-    super.key,
-    this.factdiscription,
-    this.factimage,
-    this.facttitle,
-    this.heartcount,
-  });
-  var heartcount;
-  var facttitle;
-  var factdiscription;
-  var factimage;
-
-  @override
-  State<facts_Listview> createState() => _facts_ListviewState();
+class uicolor {
+  static Color icongrey = Colors.grey;
+  static Color textgrey = Colors.grey;
+  static Color fontcolorgrey = Colors.black38;
 }
 
-class _facts_ListviewState extends State<facts_Listview> {
-  int newlike = 200;
+var like = 0;
+var heartcolor = Colors.pinkAccent;
+var heartap = false;
+
+class home_page extends StatefulWidget {
+  home_page({
+    super.key,
+  });
+
+  @override
+  State<home_page> createState() => _home_pageState();
+}
+
+class _home_pageState extends State<home_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            setState(() {
-              Navigator.pushReplacement(context, MaterialPageRoute(
-                builder: (context) {
-                  return topic_grid();
-                },
-              ));
-            });
-          },
-          icon: Icon(
-            CupertinoIcons.back,
-            color: Colors.black,
-            size: 25,
+        appBar: AppBar(
+          leadingWidth: 0,
+          backgroundColor: Colors.white,
+          title: Center(
+            child: Text(
+              'Ultimate Facts Pro',
+              style: TextStyle(fontSize: 23, color: Colors.black38),
+            ),
           ),
         ),
-      ),
+        body: Stack(
+          children: [home_page_list(), bottom_navigation()],
+        ));
+  }
+}
+
+class home_page_list extends StatefulWidget {
+  const home_page_list({super.key});
+
+  @override
+  State<home_page_list> createState() => _home_page_listState();
+}
+
+class _home_page_listState extends State<home_page_list> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       body: ListView.builder(
-        itemCount: home_Screen_facts_data.length,
+        itemCount: fact_data[0]['kids'].length,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
           return ConstrainedBox(
@@ -60,10 +75,10 @@ class _facts_ListviewState extends State<facts_Listview> {
                     builder: (context) {
                       return facts_page_view(
                           heartcount: index,
-                          facttitle: home_Screen_facts_data[index]['title'],
-                          factdiscription: home_Screen_facts_data[index]
+                          facttitle: fact_data[0]['kids'][index]['title'],
+                          factdiscription: fact_data[0]['kids'][index]
                               ['discription'],
-                          factimage: home_Screen_facts_data[index]['image']);
+                          factimage: fact_data[0]['kids'][index]['image']);
                     },
                   ));
                 });
@@ -92,7 +107,7 @@ class _facts_ListviewState extends State<facts_Listview> {
                               topRight: Radius.circular(20)),
                           image: DecorationImage(
                               image: AssetImage(
-                                  home_Screen_facts_data[index]['image']),
+                                  fact_data[0]['kids'][index]['image']),
                               fit: BoxFit.cover)),
                     )),
                     Expanded(
@@ -110,7 +125,7 @@ class _facts_ListviewState extends State<facts_Listview> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
-                              home_Screen_facts_data[index]['title'],
+                              fact_data[0]['kids'][index]['title'],
                               style: TextStyle(
                                   fontSize: 25, fontWeight: FontWeight.bold),
                             ),
@@ -134,7 +149,7 @@ class _facts_ListviewState extends State<facts_Listview> {
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
-                              home_Screen_facts_data[index]['subtitle'],
+                              fact_data[0]['kids'][index]['subtitle'],
                               overflow: TextOverflow.ellipsis,
                               maxLines: 4,
                               style: TextStyle(
@@ -155,10 +170,84 @@ class _facts_ListviewState extends State<facts_Listview> {
   }
 }
 
+class bottom_navigation extends StatefulWidget {
+  const bottom_navigation({super.key});
 
+  @override
+  State<bottom_navigation> createState() => _bottom_navigationState();
+}
 
-//  heartcount: index,
-//                           facttitle: home_Screen_facts_data[index]['title'],
-//                           factdiscription: home_Screen_facts_data[index]
-//                               ['discription'],
-//                           factimage: home_Screen_facts_data[index]['image']
+class _bottom_navigationState extends State<bottom_navigation> {
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        color: Colors.white,
+        height: 70,
+        // width: 300,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return home_page();
+                    },
+                  ));
+                });
+              },
+              icon: Icon(
+                CupertinoIcons.home,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return topic_grid();
+                    },
+                  ));
+                });
+              },
+              icon: Icon(
+                CupertinoIcons.square_list,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return bookmark_page();
+                    },
+                  ));
+                });
+              },
+              icon: Icon(
+                CupertinoIcons.bookmark,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return setting_page();
+                    },
+                  ));
+                });
+              },
+              icon: Icon(
+                CupertinoIcons.settings,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
