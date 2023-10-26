@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ultimate_fact_app/database/database.dart';
-import 'package:ultimate_fact_app/home_page/fact_page.dart';
-import 'package:ultimate_fact_app/home_page/facts_topic.dart';
-import 'package:ultimate_fact_app/home_page/home_screen.dart';
+import 'package:ultimate_fact_app/screens/facts_page.dart';
+import 'package:ultimate_fact_app/screens/facts_topic.dart';
+import 'package:ultimate_fact_app/screens/home_screen.dart';
 
 class facts_Listview extends StatefulWidget {
   facts_Listview({

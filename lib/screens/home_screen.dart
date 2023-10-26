@@ -3,7 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ultimate_fact_app/database/database.dart';
-import 'package:ultimate_fact_app/home_page/facts_listview.dart';
+import 'package:ultimate_fact_app/screens/facts_list.dart';
 
 
 class uicolor {
