@@ -50,7 +50,7 @@ class _facts_ListviewState extends State<facts_Listview> {
         ),
       ),
       body: ListView.builder(
-        itemCount: home_Screen_facts_data.length,
+        itemCount: fact_data[0]['kids'] .length,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
           return ConstrainedBox(
@@ -62,10 +62,10 @@ class _facts_ListviewState extends State<facts_Listview> {
                     builder: (context) {
                       return facts_page_view(
                           heartcount: index,
-                          facttitle: home_Screen_facts_data[index]['title'],
-                          factdiscription: home_Screen_facts_data[index]
+                          facttitle: fact_data[index]['kids'][index]['title'],
+                          factdiscription: fact_data[index]['kids'][index]
                               ['discription'],
-                          factimage: home_Screen_facts_data[index]['image']);
+                          factimage: fact_data[index]['kids'][index]['image']);
                     },
                   ));
                 });

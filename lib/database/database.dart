@@ -134,9 +134,9 @@ List topic_image = [
   {'image': 'assets/topic/uk.jpg', 'title': 'Uinited Kingdom'},
 ];
 
-List<dynamic> fact_data = [
+List<Map<String, dynamic>> fact_data = [
   {
-    'kids': {
+    'kids': [
       {
         "title": "Baby Growth",
         "subtitle": "A baby cannot taste salt until it is four months old.",
@@ -242,7 +242,7 @@ Advances come fast and furiously by 18 months, and while children will still nee
     Often newborns smile in their sleep. But starting between 6 and 8 weeks of life, babies develop a "social smile" an intentional gesture of warmth meant just for you. This is an important milestone. Your pediatrician asks you whether you've seen your baby's grin at a two-month well-child visit.''',
         "like": 435
       },
-    },
+    ],
     'brain': [
       {
         "title": "Brain Actions",
