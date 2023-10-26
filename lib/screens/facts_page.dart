@@ -42,7 +42,7 @@ class facts_page_view extends StatelessWidget {
                 color: Colors.black,
               ),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(
+                Navigator.pushReplacement(context, MaterialPageRoute(
                   builder: (context) {
                     return facts_Listview();
                   },

@@ -4,8 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ultimate_fact_app/database/database.dart';
 import 'package:ultimate_fact_app/screens/facts_page.dart';
-import 'package:ultimate_fact_app/screens/topic_page.dart';
+// import 'package:ultimate_fact_app/screens/topic_page.dart';
 import 'package:ultimate_fact_app/screens/home_page.dart';
+import 'package:ultimate_fact_app/screens/topic_page.dart';
 
 class facts_Listview extends StatefulWidget {
   facts_Listview({
@@ -31,6 +32,12 @@ class _facts_ListviewState extends State<facts_Listview> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        title: Center(
+          child: Text(
+            'Topic Search',
+            style: TextStyle(color: Colors.black38, fontSize: 25),
+          ),
+        ),
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
@@ -50,7 +57,7 @@ class _facts_ListviewState extends State<facts_Listview> {
         ),
       ),
       body: ListView.builder(
-        itemCount: fact_data[0]['kids'] .length,
+        itemCount: fact_data[0]['kids'].length,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
           return ConstrainedBox(
@@ -62,10 +69,10 @@ class _facts_ListviewState extends State<facts_Listview> {
                     builder: (context) {
                       return facts_page_view(
                           heartcount: index,
-                          facttitle: fact_data[index]['kids'][index]['title'],
-                          factdiscription: fact_data[index]['kids'][index]
+                          facttitle: fact_data[0]['kids'][index]['title'],
+                          factdiscription: fact_data[0]['kids'][index]
                               ['discription'],
-                          factimage: fact_data[index]['kids'][index]['image']);
+                          factimage: fact_data[0]['kids'][index]['image']);
                     },
                   ));
                 });
@@ -94,7 +101,7 @@ class _facts_ListviewState extends State<facts_Listview> {
                               topRight: Radius.circular(20)),
                           image: DecorationImage(
                               image: AssetImage(
-                                  home_Screen_facts_data[index]['image']),
+                                  fact_data[0]['kids'][index]['image']),
                               fit: BoxFit.cover)),
                     )),
                     Expanded(
@@ -112,7 +119,7 @@ class _facts_ListviewState extends State<facts_Listview> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
-                              home_Screen_facts_data[index]['title'],
+                              fact_data[0]['kids'][index]['title'],
                               style: TextStyle(
                                   fontSize: 25, fontWeight: FontWeight.bold),
                             ),
@@ -136,7 +143,7 @@ class _facts_ListviewState extends State<facts_Listview> {
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
-                              home_Screen_facts_data[index]['subtitle'],
+                              fact_data[0]['kids'][index]['subtitle'],
                               overflow: TextOverflow.ellipsis,
                               maxLines: 4,
                               style: TextStyle(
@@ -185,10 +192,10 @@ class _icons_barState extends State<icons_bar> {
                   setState(() {
                     heartap = !heartap;
                     // heartap == true ? newlike++ : newlike--;
-                    for (int i = 0; i < home_Screen_facts_data.length; i++) {
+                    for (int i = 0; i < fact_data[0]['kids'].length; i++) {
                       heartap == true
-                          ? home_Screen_facts_data[i]['like']++
-                          : home_Screen_facts_data[i]['like']--;
+                          ? fact_data[0]['kids'][i]['like']++
+                          : fact_data[0]['kids']['like']--;
                     }
 
                     // widget.onhear_tap;

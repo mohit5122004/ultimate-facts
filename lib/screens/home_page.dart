@@ -1,10 +1,16 @@
 // ignore_for_file: must_be_immutable
 
 // import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:ultimate_fact_app/database/database.dart';
+import 'package:ultimate_fact_app/database/database.dart';
+import 'package:ultimate_fact_app/screens/bookmark_page.dart';
+import 'package:ultimate_fact_app/screens/facts_page.dart';
 import 'package:ultimate_fact_app/screens/list_page.dart';
-
+import 'package:ultimate_fact_app/screens/settings_page.dart';
+// import 'package:ultimate_fact_app/database/database.dart';
+// import 'package:ultimate_fact_app/screens/list_page.dart';
+import 'package:ultimate_fact_app/screens/topic_page.dart';
 
 class uicolor {
   static Color icongrey = Colors.grey;
@@ -28,6 +34,220 @@ class home_page extends StatefulWidget {
 class _home_pageState extends State<home_page> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: facts_Listview());
+    return Scaffold(
+        appBar: AppBar(
+          leadingWidth: 0,
+          backgroundColor: Colors.white,
+          title: Center(
+            child: Text(
+              'Ultimate Facts Pro',
+              style: TextStyle(fontSize: 23, color: Colors.black38),
+            ),
+          ),
+        ),
+        body: Stack(
+          children: [home_page_list(), bottom_navigation()],
+        ));
+  }
+}
+
+class home_page_list extends StatefulWidget {
+  const home_page_list({super.key});
+
+  @override
+  State<home_page_list> createState() => _home_page_listState();
+}
+
+class _home_page_listState extends State<home_page_list> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ListView.builder(
+        itemCount: fact_data[0]['kids'].length,
+        scrollDirection: Axis.vertical,
+        itemBuilder: (context, index) {
+          return ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: 550, minHeight: 480),
+            child: InkWell(
+              onTap: () {
+                setState(() {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return facts_page_view(
+                          heartcount: index,
+                          facttitle: fact_data[0]['kids'][index]['title'],
+                          factdiscription: fact_data[0]['kids'][index]
+                              ['discription'],
+                          factimage: fact_data[0]['kids'][index]['image']);
+                    },
+                  ));
+                });
+              },
+              child: Container(
+                height: 480,
+                width: double.infinity,
+                margin: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.4),
+                          spreadRadius: 0.61,
+                          blurRadius: 4)
+                    ],
+                    // color: Colors.yellow.shade300,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Column(
+                  children: [
+                    Expanded(
+                        child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20)),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                  fact_data[0]['kids'][index]['image']),
+                              fit: BoxFit.cover)),
+                    )),
+                    Expanded(
+                        child: Container(
+                      // padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: icons_bar(
+                              dearcount: index,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              fact_data[0]['kids'][index]['title'],
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 2, horizontal: 10),
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.withOpacity(0.34),
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Text(
+                                'Less Then 1 min.read',
+                                style: TextStyle(color: Colors.black38),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              fact_data[0]['kids'][index]['subtitle'],
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 4,
+                              style: TextStyle(
+                                  fontSize: 20, color: uicolor.fontcolorgrey),
+                            ),
+                          )
+                        ],
+                      ),
+                    )),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class bottom_navigation extends StatefulWidget {
+  const bottom_navigation({super.key});
+
+  @override
+  State<bottom_navigation> createState() => _bottom_navigationState();
+}
+
+class _bottom_navigationState extends State<bottom_navigation> {
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        color: Colors.white,
+        height: 70,
+        // width: 300,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return home_page();
+                    },
+                  ));
+                });
+              },
+              icon: Icon(
+                CupertinoIcons.home,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return topic_grid();
+                    },
+                  ));
+                });
+              },
+              icon: Icon(
+                CupertinoIcons.square_list,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return bookmark_page();
+                    },
+                  ));
+                });
+              },
+              icon: Icon(
+                CupertinoIcons.bookmark,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return setting_page();
+                    },
+                  ));
+                });
+              },
+              icon: Icon(
+                CupertinoIcons.settings,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
