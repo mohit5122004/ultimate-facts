@@ -157,8 +157,6 @@ class _facts_ListviewState extends State<facts_Listview> {
   }
 }
 
-
-
 class icons_bar extends StatefulWidget {
   icons_bar({
     required this.dearcount,
