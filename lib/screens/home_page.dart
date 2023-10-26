@@ -1,8 +1,8 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ultimate_fact_app/database/database.dart';
+// import 'package:ultimate_fact_app/database/database.dart';
 import 'package:ultimate_fact_app/screens/list_page.dart';
 
 
