@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:ultimate_fact_app/screens/home_page.dart';
-import 'package:ultimate_fact_app/screens/topic_page.dart';
+// import 'package:ultimate_fact_app/screens/topic_page.dart';
 // import 'package:ultimate_fact_app/home_page/home_screen.dart';
 import 'package:ultimate_fact_app/splash_screen/splash_screen.dart';
 
@@ -12,7 +12,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {    
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),

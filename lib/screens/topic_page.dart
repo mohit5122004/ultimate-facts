@@ -5,7 +5,7 @@ import 'package:ultimate_fact_app/screens/home_page.dart';
 // import 'package:ultimate_fact_app/home_page/fact_page.dart';
 import 'package:ultimate_fact_app/screens/list_page.dart';
 
-facts_Listview facts_container = facts_Listview();
+// facts_Listview facts_container = facts_Listview();
 
 class topic_grid extends StatefulWidget {
   const topic_grid({super.key});
@@ -75,7 +75,7 @@ class _topic_gridState extends State<topic_grid> {
                                   Navigator.pushReplacement(context,
                                       MaterialPageRoute(
                                     builder: (context) {
-                                      return facts_Listview();
+                                      return facts_Listview(index: index,);
                                     },
                                   ));
                                 });

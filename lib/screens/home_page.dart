@@ -51,6 +51,8 @@ class _home_pageState extends State<home_page> {
   }
 }
 
+// var fact = fact_data[0]['kids'];
+
 class home_page_list extends StatefulWidget {
   const home_page_list({super.key});
 
@@ -63,7 +65,7 @@ class _home_page_listState extends State<home_page_list> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-        itemCount: fact_data[0]['kids'].length,
+        itemCount: home_Screen_facts_data.length,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
           return ConstrainedBox(
@@ -74,11 +76,12 @@ class _home_page_listState extends State<home_page_list> {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
                       return facts_page_view(
+                        index_page: index,
                           heartcount: index,
-                          facttitle: fact_data[0]['kids'][index]['title'],
-                          factdiscription: fact_data[0]['kids'][index]
+                          facttitle: home_Screen_facts_data[index]['title'],
+                          factdiscription: home_Screen_facts_data[index]
                               ['discription'],
-                          factimage: fact_data[0]['kids'][index]['image']);
+                          factimage: home_Screen_facts_data[index]['image']);
                     },
                   ));
                 });
@@ -107,7 +110,7 @@ class _home_page_listState extends State<home_page_list> {
                               topRight: Radius.circular(20)),
                           image: DecorationImage(
                               image: AssetImage(
-                                  fact_data[0]['kids'][index]['image']),
+                                  home_Screen_facts_data[index]['image']),
                               fit: BoxFit.cover)),
                     )),
                     Expanded(
@@ -125,7 +128,7 @@ class _home_page_listState extends State<home_page_list> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
-                              fact_data[0]['kids'][index]['title'],
+                              home_Screen_facts_data[index]['title'],
                               style: TextStyle(
                                   fontSize: 25, fontWeight: FontWeight.bold),
                             ),
@@ -149,7 +152,7 @@ class _home_page_listState extends State<home_page_list> {
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
-                              fact_data[0]['kids'][index]['subtitle'],
+                              home_Screen_facts_data[index]['subtitle'],
                               overflow: TextOverflow.ellipsis,
                               maxLines: 4,
                               style: TextStyle(

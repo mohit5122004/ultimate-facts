@@ -188,11 +188,9 @@ In summary, infants’ ability to detect salt taste develops postnatally such th
       },
       {
         "title": "Baby Growth",
-        "subtitle":
-            "Babies can not recognize themselves in a mirror until they are at least 15-18 months old.",
+        "subtitle": "Babies can not recognize themselves in a mirror until they are at least 15-18 months old.",
         'image': 'assets/kids/one.png',
-        "discription":
-            '''Your child will probably start doing things for himself sometime after his first birthday. But every child develops at their own pace, and yours may be more interested in learning one set of skills before mastering another. So try not to worry too much if your child's developing differently than other kids the same age.
+        "discription":'''Your child will probably start doing things for himself sometime after his first birthday. But every child develops at their own pace, and yours may be more interested in learning one set of skills before mastering another. So try not to worry too much if your child's developing differently than other kids the same age.
 Advances come fast and furiously by 18 months, and while children will still need lots of help and attention for years to come, most will have the basics of self-care–dressing, washing their hands, feeding themselves, and going to the bathroom on their own mastered by or soon after their fourth birthday''',
         "like": 2170
       },
@@ -278,11 +276,8 @@ The ventral tegmental area is part of what is known as the brain's reward circui
         "subtitle":
             "The brain treats rejection like physical pain, according to scientists.",
         'image': 'assets/brain/one.png',
-        "discription":
-            '''The human brain treats rejection in a similar way to the way it processes physical pain.
-
+        "discription":'''The human brain treats rejection in a similar way to the way it processes physical pain.
 A scientific study conducted by the University of Michigan Medical School has shown that the brain uses a similar reaction to ease the pain of social rejection as it does to deal with pain caused by physical injury.
-
 A team led by Dr. David T. Hsu also found that people who showed high levels of resilience on a personality test also had higher levels of natural painkiller activation.''',
         "like": 435
       },
@@ -335,13 +330,9 @@ The ventral tegmental area is part of what is known as the brain's reward circui
     'car': [
       {
         "title": "Vulcanization",
-        "subtitle":
-            'Vulcanization is a process for converting natural rubber or related polymers into more durable materials by heating them with sulfur or other equivalent curatives or accelerators.',
+        "subtitle": 'Vulcanization is a process for converting natural rubber or related polymers into more durable materials by heating them with sulfur or other equivalent curatives or accelerators.',
         'image': 'assets/car/one.png',
-        "discription":
-            '''Vulcanization or vulcanization is a chemical process for converting natural rubber or related polymers into more durable materials via the addition of sulfur or other equivalent curatives or accelerators. These additives modify the polymer by forming cross-links (bridges) between individual polymer chains.
-
-''',
+        "discription":  '''Vulcanization or vulcanization is a chemical process for converting natural rubber or related polymers into more durable materials via the addition of sulfur or other equivalent curatives or accelerators. These additives modify the polymer by forming cross-links (bridges) between individual polymer chains.''',
         "like": 556
       },
       {
@@ -351,35 +342,20 @@ The ventral tegmental area is part of what is known as the brain's reward circui
         'image': 'assets/car/two.png',
         "discription":
             '''In 1930, laws were proposed in Massachusetts and St. Louis to ban radios while driving. According to automotive historian Michael Lamm, "Opponents of car radios argued that they distracted drivers and caused accidents, that tuning them took a driver's attention away from the road, and that music could lull a driver to sleep."
-
-Even the Auto Club of New York agreed. In their 1934 poll, 56 percent deemed the car radio a "dangerous distraction" Arguing the other side was the Radio Manufacturers Association, who pointed out that car radios could be used to warn drivers of inclement weather and bad road conditions, as well as keeping them awake when they got drowsy.
-A little history on the car radio: The first one was introduced in 1922 by Chevrolet. It cost a whopping 200. With an antenna that covered the car's entire roof, batteries that barely fit under the front seat and two mammoth speakers attached behind the seat, it was about as convenient as taking a live orchestra along for a ride.
-By the early 1930s, the less cumbersome built-in Motorola radios were standard features in cars. Later in the decade, push-button tuning and presets helped drivers to select stations without taking their eyes off the road. By 1946, 9 million cars had radios. Thanks to the transistor, both size and price came way down so that by 1963, 50 million cars, over 60 percent, were outfitted with radios. Over one-third of America's radio listening occurred in the car.
-And those anti-radio laws? Though a few were signed in small municipalities, they mostly went nowhere, unlike the current anti-texting laws.
-Thirty-five states and the District of Columbia have now banned texting while driving. And the tickets are already piling up. In New York last year, over 5,000 texting tickets were written (each carries a 150 fine plus two points).''',
+Even the Auto Club of New York agreed. In their 1934 poll, 56 percent deemed the car radio a "dangerous distraction" Arguing the other side was the Radio Manufacturers Association, who pointed out that car radios could be used to warn drivers of inclement weather and bad road.Thirty-five states and the District of Columbia have now banned texting while driving. And the tickets are already piling up. In New York last year, over 5,000 texting tickets were written (each carries a 150 fine plus two points).''',
         "like": 766
       },
       {
         "title": "Engine Noise",
-        "subtitle":
-            'A lot of new cars fake engine noise through speakers. They are quite silent otherwise.',
+        "subtitle":'A lot of new cars fake engin noise through speakers. They are quite silent otherwise.',
         'image': 'assets/car/three.png',
-        "discription":
-            '''Stomp on the gas in a new Ford Mustang or F-150, and you'll hear a meaty, throaty rumble, the same style roar that Americans have associated with auto power and performance for decades.
-
+        "discription":'''Stomp on the gas in a new Ford Mustang or F-150, and you'll hear a meaty, throaty rumble, the same style roar that Americans have associated with auto power and performance for decades.
 In some of America's best-selling cars and trucks, the engine growl is a finely tuned bit of lip-syncing, boosted through special pipes or digitally faked altogether. And it's driving car enthusiasts insane.
-
 Fake engine noise has become one of the auto industry's dirty little secrets, with automakers from BMW to Volkswagen turning to a sound-boosting bag of tricks. Without them, today's more fuel-efficient engines would sound far quieter and, automakers worry, seemingly less powerful, potentially pushing buyers away.
-
-Softer-sounding engines are a positive symbol of just how far engines and the gas economy have progressed. But automakers say they resort to artifice because they understand a key car-buyer paradox: Drivers want all the force and fuel savings of a newer, better engine but the classic sound of an old gas-guzzler.
-
+Softer-sounding engines are a positive symbol of just how far engines and the gas economy have progressed. But automakers say they resort to artifice because they understand a key car-buyer paradox: Drivers want all the force and fuel savings of a newer, better engine but the classic sound o an old gas-guzzler.
 "Enhanced" engine songs have become the signature of eerily quiet electrics like the Toyota Prius. But the fakery is now increasingly finding its way into even beefy trucks and muscle cars, long revered for their iconic growl.
-
 For the 2015 Mustang EcoBoost, Ford sound engineers and developers worked on an "Active Noise Control" system that amplifies the engine's purr through the car speakers. Afterward, the automaker surveyed members of Mustang fan clubs on which processed "sound concepts" they most enjoyed.
-
-Ford said in a statement the vintage V8 engine boom "has long been considered the mating call of Mustang" but added that the newly processed pony-car sound is "athletic and youthful," "a more refined growl" with "a low-frequency sense of powerfulness."
-
-''',
+Ford said in a statement the vintage V8 engine boom "has long been considered the mating call of Mustang" but added that the newly processed pony-car sound is "athletic and youthful," "a more refined growl" with "a low-frequency sense of powerfulness." ''',
         "like": 635
       },
     ],
@@ -391,13 +367,9 @@ Ford said in a statement the vintage V8 engine boom "has long been considered th
         'image': 'assets/earth/one.png',
         "discription":
             '''Nights would be much, much darker. The next brightest object in the night sky is Venus. But it still wouldn't be enough to light up the sky. A full moon is nearly two thousand times brighter than Venus is at its brightest.
-
 Without the moon, a day on earth would only last six to twelve hours. There could be more than a thousand days in one year! That's because the Earth's rotation slows down over time thanks to the gravitational force -- or pull of the moon -- and without it, days would go by in a blink.
-
 Moonless earth would also change the size of ocean tides -- making them about one-third as high as they are now.
-
 Forget about seeing any lunar eclipses -- or any solar eclipses -- without the moon, there would be nothing to block the sun.
-
 Without a moon, the tilt of our earth's axis would vary over time. This could create some very wild weather. Right now, thanks to our moon, our axis stays tilted at twenty-three point five degrees. But without the moon, the earth might tilt too far over or hardly tilt at all leading to no seasons or even extreme seasons.''',
         "like": 235
       },
@@ -811,7 +783,7 @@ Advances come fast and furiously by 18 months, and while children will still nee
         "like": 435
       },
     ],
-    'football': [
+    'football':[
       {
         "title": "Brain Actions",
         "subtitle":
@@ -1556,7 +1528,7 @@ Doesn't it make one realize how truly vast the existence of the earth is and hum
         "like": 435
       },
     ],
-    'inspiration': [
+    'inspiration':[
       {
         "title": "Baby Growth",
         "subtitle": "A baby cannot taste salt until it is four months old.",
@@ -1752,7 +1724,7 @@ The ventral tegmental area is part of what is known as the brain's reward circui
         "like": 435
       },
     ],
-    'socialmedia': [
+    'socialmedia':[
       {
         "title": "Vulcanization",
         "subtitle":

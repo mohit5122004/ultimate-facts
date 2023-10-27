@@ -24,12 +24,13 @@ class facts_page_view extends StatelessWidget {
       required this.facttitle,
       required this.heartcount,
       required this.factdiscription,
+      required this.index_page,
       required this.factimage});
   var facttitle;
   var factimage;
   var factdiscription;
   var heartcount;
-
+  var index_page;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +45,9 @@ class facts_page_view extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(context, MaterialPageRoute(
                   builder: (context) {
-                    return facts_Listview();
+                    return facts_Listview(
+                      index: index_page,
+                    );
                   },
                 ));
               },
