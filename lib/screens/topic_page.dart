@@ -75,7 +75,9 @@ class _topic_gridState extends State<topic_grid> {
                                   Navigator.pushReplacement(context,
                                       MaterialPageRoute(
                                     builder: (context) {
-                                      return facts_Listview(index: index,);
+                                      return facts_Listview(
+                                        index: index,
+                                      );
                                     },
                                   ));
                                 });
@@ -101,7 +103,8 @@ class _topic_gridState extends State<topic_grid> {
                         );
                       },
                     ),
-                  )
+                  ),
+                  SizedBox(height: 60)
                 ],
               )),
           bottom_navigation()

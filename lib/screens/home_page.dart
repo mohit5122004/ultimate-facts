@@ -61,113 +61,141 @@ class home_page_list extends StatefulWidget {
 }
 
 class _home_page_listState extends State<home_page_list> {
+  var newlike = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: home_Screen_facts_data.length,
-        scrollDirection: Axis.vertical,
-        itemBuilder: (context, index) {
-          return ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: 550, minHeight: 480),
-            child: InkWell(
-              onTap: () {
-                setState(() {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) {
-                      return facts_page_view(
-                        index_page: index,
-                          heartcount: index,
-                          facttitle: home_Screen_facts_data[index]['title'],
-                          factdiscription: home_Screen_facts_data[index]
-                              ['discription'],
-                          factimage: home_Screen_facts_data[index]['image']);
+      body: Column(
+        children: [
+          Container(
+            height: 650,
+            child: ListView.builder(
+              itemCount: home_Screen_facts_data.length,
+              scrollDirection: Axis.vertical,
+              itemBuilder: (context, index) {
+                return ConstrainedBox(
+                  constraints: BoxConstraints(maxHeight: 550, minHeight: 480),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return facts_page_view(
+                                factlike: home_Screen_facts_data[index]['like'],
+                                index_page: index,
+                                facttitle: home_Screen_facts_data[index]
+                                    ['title'],
+                                factdiscription: home_Screen_facts_data[index]
+                                    ['discription'],
+                                factimage: home_Screen_facts_data[index]
+                                    ['image']);
+                          },
+                        ));
+                      });
                     },
-                  ));
-                });
-              },
-              child: Container(
-                height: 480,
-                width: double.infinity,
-                margin: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          spreadRadius: 0.61,
-                          blurRadius: 4)
-                    ],
-                    // color: Colors.yellow.shade300,
-                    borderRadius: BorderRadius.circular(20)),
-                child: Column(
-                  children: [
-                    Expanded(
-                        child: Container(
+                    child: Container(
+                      height: 480,
+                      width: double.infinity,
+                      margin: EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20)),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  home_Screen_facts_data[index]['image']),
-                              fit: BoxFit.cover)),
-                    )),
-                    Expanded(
-                        child: Container(
-                      // padding: EdgeInsets.symmetric(horizontal: 20),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.4),
+                                spreadRadius: 0.61,
+                                blurRadius: 4)
+                          ],
+                          // color: Colors.yellow.shade300,
+                          borderRadius: BorderRadius.circular(20)),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: icons_bar(
-                              dearcount: index,
+                          Expanded(
+                              child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20)),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        home_Screen_facts_data[index]['image']),
+                                    fit: BoxFit.cover)),
+                          )),
+                          Expanded(
+                              child: Container(
+                            // padding: EdgeInsets.symmetric(horizontal: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: icons_bar(
+                                    likedatapath: home_Screen_facts_data[index]
+                                        ['like'],
+                                    // onhear_tap: () {
+                                    //   setState(() {
+                                    //     newlike++;
+                                    //     // newlike = heartap == true
+                                    //     //     ? home_Screen_facts_data[index]
+                                    //     //         ['like']++
+                                    //     //     : home_Screen_facts_data[index]
+                                    //     //         ['like']--;
+                                    //   });
+                                    // },
+                                    likedata: newlike,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Text(
+                                    home_Screen_facts_data[index]['title'],
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 2, horizontal: 10),
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey.withOpacity(0.34),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Text(
+                                      'Less Then 1 min.read',
+                                      style: TextStyle(color: Colors.black38),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 20),
+                                  child: Text(
+                                    home_Screen_facts_data[index]['subtitle'],
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 4,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: uicolor.fontcolorgrey),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              home_Screen_facts_data[index]['title'],
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          SizedBox(height: 10),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 2, horizontal: 10),
-                              decoration: BoxDecoration(
-                                  color: Colors.grey.withOpacity(0.34),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Text(
-                                'Less Then 1 min.read',
-                                style: TextStyle(color: Colors.black38),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 10),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              home_Screen_facts_data[index]['subtitle'],
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 4,
-                              style: TextStyle(
-                                  fontSize: 20, color: uicolor.fontcolorgrey),
-                            ),
-                          )
+                          )),
                         ],
                       ),
-                    )),
-                  ],
-                ),
-              ),
+                    ),
+                  ),
+                );
+              },
             ),
-          );
-        },
+          ),
+          SizedBox(height: 20),
+        ],
       ),
     );
   }

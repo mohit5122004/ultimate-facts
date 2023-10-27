@@ -22,15 +22,17 @@ class facts_page_view extends StatelessWidget {
   facts_page_view(
       {super.key,
       required this.facttitle,
-      required this.heartcount,
+      // required this.heartcount,
       required this.factdiscription,
       required this.index_page,
+      required this.factlike,
       required this.factimage});
   var facttitle;
   var factimage;
   var factdiscription;
-  var heartcount;
+  // var heartcount;
   var index_page;
+  var factlike;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,8 +81,11 @@ class facts_page_view extends StatelessWidget {
               padding: EdgeInsets.all(15),
               child: Column(
                 children: [
-                  icons_bar(
-                    dearcount: heartcount,
+                  icons_bar(likedatapath: factlike,
+                    likedata: factlike,
+                    // onhear_tap: () {
+
+                    // },
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10),
@@ -97,7 +102,7 @@ class facts_page_view extends StatelessWidget {
                 ],
               ),
             )
-          ]))
+          ])),
         ],
       ),
     );

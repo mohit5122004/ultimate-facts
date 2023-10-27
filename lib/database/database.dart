@@ -188,9 +188,11 @@ In summary, infants’ ability to detect salt taste develops postnatally such th
       },
       {
         "title": "Baby Growth",
-        "subtitle": "Babies can not recognize themselves in a mirror until they are at least 15-18 months old.",
+        "subtitle":
+            "Babies can not recognize themselves in a mirror until they are at least 15-18 months old.",
         'image': 'assets/kids/one.png',
-        "discription":'''Your child will probably start doing things for himself sometime after his first birthday. But every child develops at their own pace, and yours may be more interested in learning one set of skills before mastering another. So try not to worry too much if your child's developing differently than other kids the same age.
+        "discription":
+            '''Your child will probably start doing things for himself sometime after his first birthday. But every child develops at their own pace, and yours may be more interested in learning one set of skills before mastering another. So try not to worry too much if your child's developing differently than other kids the same age.
 Advances come fast and furiously by 18 months, and while children will still need lots of help and attention for years to come, most will have the basics of self-care–dressing, washing their hands, feeding themselves, and going to the bathroom on their own mastered by or soon after their fourth birthday''',
         "like": 2170
       },
@@ -276,7 +278,8 @@ The ventral tegmental area is part of what is known as the brain's reward circui
         "subtitle":
             "The brain treats rejection like physical pain, according to scientists.",
         'image': 'assets/brain/one.png',
-        "discription":'''The human brain treats rejection in a similar way to the way it processes physical pain.
+        "discription":
+            '''The human brain treats rejection in a similar way to the way it processes physical pain.
 A scientific study conducted by the University of Michigan Medical School has shown that the brain uses a similar reaction to ease the pain of social rejection as it does to deal with pain caused by physical injury.
 A team led by Dr. David T. Hsu also found that people who showed high levels of resilience on a personality test also had higher levels of natural painkiller activation.''',
         "like": 435
@@ -330,9 +333,11 @@ The ventral tegmental area is part of what is known as the brain's reward circui
     'car': [
       {
         "title": "Vulcanization",
-        "subtitle": 'Vulcanization is a process for converting natural rubber or related polymers into more durable materials by heating them with sulfur or other equivalent curatives or accelerators.',
+        "subtitle":
+            'Vulcanization is a process for converting natural rubber or related polymers into more durable materials by heating them with sulfur or other equivalent curatives or accelerators.',
         'image': 'assets/car/one.png',
-        "discription":  '''Vulcanization or vulcanization is a chemical process for converting natural rubber or related polymers into more durable materials via the addition of sulfur or other equivalent curatives or accelerators. These additives modify the polymer by forming cross-links (bridges) between individual polymer chains.''',
+        "discription":
+            '''Vulcanization or vulcanization is a chemical process for converting natural rubber or related polymers into more durable materials via the addition of sulfur or other equivalent curatives or accelerators. These additives modify the polymer by forming cross-links (bridges) between individual polymer chains.''',
         "like": 556
       },
       {
@@ -347,9 +352,11 @@ Even the Auto Club of New York agreed. In their 1934 poll, 56 percent deemed the
       },
       {
         "title": "Engine Noise",
-        "subtitle":'A lot of new cars fake engin noise through speakers. They are quite silent otherwise.',
+        "subtitle":
+            'A lot of new cars fake engin noise through speakers. They are quite silent otherwise.',
         'image': 'assets/car/three.png',
-        "discription":'''Stomp on the gas in a new Ford Mustang or F-150, and you'll hear a meaty, throaty rumble, the same style roar that Americans have associated with auto power and performance for decades.
+        "discription":
+            '''Stomp on the gas in a new Ford Mustang or F-150, and you'll hear a meaty, throaty rumble, the same style roar that Americans have associated with auto power and performance for decades.
 In some of America's best-selling cars and trucks, the engine growl is a finely tuned bit of lip-syncing, boosted through special pipes or digitally faked altogether. And it's driving car enthusiasts insane.
 Fake engine noise has become one of the auto industry's dirty little secrets, with automakers from BMW to Volkswagen turning to a sound-boosting bag of tricks. Without them, today's more fuel-efficient engines would sound far quieter and, automakers worry, seemingly less powerful, potentially pushing buyers away.
 Softer-sounding engines are a positive symbol of just how far engines and the gas economy have progressed. But automakers say they resort to artifice because they understand a key car-buyer paradox: Drivers want all the force and fuel savings of a newer, better engine but the classic sound o an old gas-guzzler.
@@ -783,7 +790,7 @@ Advances come fast and furiously by 18 months, and while children will still nee
         "like": 435
       },
     ],
-    'football':[
+    'football': [
       {
         "title": "Brain Actions",
         "subtitle":
@@ -1528,7 +1535,7 @@ Doesn't it make one realize how truly vast the existence of the earth is and hum
         "like": 435
       },
     ],
-    'inspiration':[
+    'inspiration': [
       {
         "title": "Baby Growth",
         "subtitle": "A baby cannot taste salt until it is four months old.",
@@ -1724,7 +1731,7 @@ The ventral tegmental area is part of what is known as the brain's reward circui
         "like": 435
       },
     ],
-    'socialmedia':[
+    'socialmedia': [
       {
         "title": "Vulcanization",
         "subtitle":

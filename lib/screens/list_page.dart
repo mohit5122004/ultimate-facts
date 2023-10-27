@@ -15,9 +15,9 @@ class facts_Listview extends StatefulWidget {
     this.factimage,
     this.facttitle,
     required this.index,
-    this.heartcount,
+    // this.heartcount,
   });
-  var heartcount;
+  // var heartcount;
   var facttitle;
   var factdiscription;
   var factimage;
@@ -51,13 +51,13 @@ class facts_Listview extends StatefulWidget {
 
 var fact;
 var factlenth;
+// int newlike = 200;
 
 class _facts_ListviewState extends State<facts_Listview> {
-  int newlike = 200;
   @override
   Widget build(BuildContext context) {
     fact;
-    final categoryList = [
+    final topicilist = [
       'apple',
       'art',
       'astalia',
@@ -88,11 +88,10 @@ class _facts_ListviewState extends State<facts_Listview> {
       'uk',
     ];
 
-    final categoryIndex = widget.index;
-    fact = fact_data[0][categoryIndex < categoryList.length
-        ? categoryList[categoryIndex]
-        : "uk"];
-    factlenth = fact_data[0][categoryList[categoryIndex]].length;
+    final topicindex = widget.index;
+    fact = fact_data[0]
+        [topicindex < topicilist.length ? topicilist[topicindex] : "uk"];
+    factlenth = fact_data[0][topicilist[topicindex]].length;
 
     return Scaffold(
       appBar: AppBar(
@@ -134,7 +133,7 @@ class _facts_ListviewState extends State<facts_Listview> {
                     builder: (context) {
                       return facts_page_view(
                           index_page: index,
-                          heartcount: index,
+                          factlike: fact[index]['like'],
                           facttitle: fact[index]['title'],
                           factdiscription: fact[index]['discription'],
                           factimage: fact[index]['image']);
@@ -142,7 +141,7 @@ class _facts_ListviewState extends State<facts_Listview> {
                   ));
                 });
               },
-              child: color_container(index: index),
+              child: fact_container(index: index),
             ),
           );
         },
@@ -208,7 +207,11 @@ fact_container({required int index}) {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: icons_bar(
-                  dearcount: index,
+                  likedatapath: fact[index]['like'],
+                  // dearcount: index,
+                  // dearcount: 0,
+                  likedata: fact[index]['like'],
+                  // onhear_tap: () {},
                 ),
               ),
               Padding(
@@ -251,19 +254,24 @@ fact_container({required int index}) {
 }
 
 class icons_bar extends StatefulWidget {
-  icons_bar({
-    required this.dearcount,
-    // required this.onhear_tap,
-  });
+  icons_bar(
+      {
+      // required this.onhear_tap,
+      required,
+      required this.likedata,
+      required this.likedatapath});
 
-  int dearcount = 0;
   // VoidCallback onhear_tap;
+  var likedata;
+  var likedatapath;
+
   @override
   State<icons_bar> createState() => _icons_barState();
 }
 
+var newlike;
+
 class _icons_barState extends State<icons_bar> {
-  int newlike = 100;
   @override
   Widget build(
     BuildContext context,
@@ -274,17 +282,17 @@ class _icons_barState extends State<icons_bar> {
         Row(
           children: [
             IconButton(
+                // onPressed: onhear_tap,
                 onPressed: () {
                   setState(() {
-                    heartap = !heartap;
                     // heartap == true ? newlike++ : newlike--;
-                    for (int i = 0; i < fact_data[0]['kids'].length; i++) {
-                      heartap == true
-                          ? fact_data[0]['kids'][i]['like']++
-                          : fact_data[0]['kids']['like']--;
-                    }
 
+                    heartap = !heartap;
                     // widget.onhear_tap;
+                    widget.likedata = heartap == true
+                        ? widget.likedatapath++
+                        : widget.likedatapath--;
+                    widget.likedata = widget.likedatapath;
                   });
                 },
                 splashRadius: 10,
@@ -297,7 +305,7 @@ class _icons_barState extends State<icons_bar> {
                   size: 30,
                 )),
             Text(
-              home_Screen_facts_data[widget.dearcount]['like'].toString(),
+              widget.likedatapath.toString(),
               style: TextStyle(
                   fontSize: 22,
                   color: uicolor.textgrey,
@@ -334,10 +342,3 @@ class _icons_barState extends State<icons_bar> {
     );
   }
 }
-
-//  heartcount: index,
-//                           facttitle: home_Screen_facts_data[index]['title'],
-//                           factdiscription: home_Screen_facts_data[index]
-//                               ['discription'],
-//                           factimage: home_Screen_facts_data[index]['image']
-
