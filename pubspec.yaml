@@ -62,7 +62,7 @@ flutter:
   assets:
     - assets/topic/
     - assets/earth/   
-    - assets/cars/
+    - assets/car/
     - assets/kids/
     - assets/brain/
     - assets/
