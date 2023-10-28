@@ -37,6 +37,7 @@ class _home_pageState extends State<home_page> {
     return Scaffold(
         appBar: AppBar(
           leadingWidth: 0,
+          elevation: 0,
           backgroundColor: Colors.white,
           title: Center(
             child: Text(
@@ -67,8 +68,8 @@ class _home_page_listState extends State<home_page_list> {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            height: 650,
+          Expanded(
+            // height: 650,
             child: ListView.builder(
               itemCount: home_Screen_facts_data.length,
               scrollDirection: Axis.vertical,
@@ -81,8 +82,10 @@ class _home_page_listState extends State<home_page_list> {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
                             return facts_page_view(
+                                indexpath: index,
+                                routeonback: home_page(),
                                 factlike: home_Screen_facts_data[index]['like'],
-                                index_page: index,
+                                // index_page: index,
                                 facttitle: home_Screen_facts_data[index]
                                     ['title'],
                                 factdiscription: home_Screen_facts_data[index]
@@ -129,18 +132,20 @@ class _home_page_listState extends State<home_page_list> {
                                 Padding(
                                   padding: const EdgeInsets.all(10),
                                   child: icons_bar(
+                                    factdiscription:
+                                        home_Screen_facts_data[index]
+                                            ['discription'],
+                                    pathindex: index,
                                     likedatapath: home_Screen_facts_data[index]
                                         ['like'],
-                                    // onhear_tap: () {
-                                    //   setState(() {
-                                    //     newlike++;
-                                    //     // newlike = heartap == true
-                                    //     //     ? home_Screen_facts_data[index]
-                                    //     //         ['like']++
-                                    //     //     : home_Screen_facts_data[index]
-                                    //     //         ['like']--;
-                                    //   });
-                                    // },
+                                    factimage: home_Screen_facts_data[index]
+                                        ['image'],
+                                    factlike: home_Screen_facts_data[index]
+                                        ['like'],
+                                    factsubtitle: home_Screen_facts_data[index]
+                                        ['subtitle'],
+                                    facttitle: home_Screen_facts_data[index]
+                                        ['title'],
                                     likedata: newlike,
                                   ),
                                 ),
@@ -194,7 +199,9 @@ class _home_page_listState extends State<home_page_list> {
               },
             ),
           ),
-          SizedBox(height: 20),
+          SizedBox(
+            height: 60,
+          )
         ],
       ),
     );

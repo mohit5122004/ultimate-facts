@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ultimate_fact_app/database/database.dart';
+import 'package:ultimate_fact_app/screens/bookmark_page.dart';
 import 'package:ultimate_fact_app/screens/facts_page.dart';
 // import 'package:ultimate_fact_app/screens/topic_page.dart';
 import 'package:ultimate_fact_app/screens/home_page.dart';
@@ -25,33 +26,9 @@ class facts_Listview extends StatefulWidget {
   @override
   State<facts_Listview> createState() => _facts_ListviewState();
 }
-// class listrunner{
-// runner(){
-// final fact = fact_data[index]['kids'][0];
-// }
-// }
-
-// class topic_logic {
-//  static topic({required var index}) {
-//   }
-// }
-
-// for (int i = 0; i < fact_data[0].length; i++) {
-//       fact_data.forEach((entry) {
-//         entry.forEach((key, _) {
-//           print('$key');
-//           if (widget.index == i) {
-//             fact = fact_data[0]["$key"];
-//             factlenth = fact_data[0]['$key'];
-//             print(key);
-//           }
-//         });
-//       });
-//     }
 
 var fact;
 var factlenth;
-// int newlike = 200;
 
 class _facts_ListviewState extends State<facts_Listview> {
   @override
@@ -132,7 +109,10 @@ class _facts_ListviewState extends State<facts_Listview> {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
                       return facts_page_view(
-                          index_page: index,
+                          indexpath: index,
+                          routeonback: facts_Listview(
+                            index: index,
+                          ),
                           factlike: fact[index]['like'],
                           facttitle: fact[index]['title'],
                           factdiscription: fact[index]['discription'],
@@ -141,7 +121,12 @@ class _facts_ListviewState extends State<facts_Listview> {
                   ));
                 });
               },
-              child: fact_container(index: index),
+              child: fact_container(
+                  index: index,
+                  factimage: fact[index]['image'],
+                  factlike: fact[index]['like'],
+                  factsubtitle: fact[index]['subtitle'],
+                  facttitle: fact[index]['title']),
             ),
           );
         },
@@ -174,7 +159,14 @@ class _facts_ListviewState extends State<facts_Listview> {
   }
 }
 
-fact_container({required int index}) {
+fact_container(
+    {required int index,
+    required var factlike,
+    required String facttitle,
+    required var factimage,
+    
+    required var factsubtitle,
+    VoidCallback? bookmark_remove}) {
   return Container(
     height: 480,
     width: double.infinity,
@@ -196,7 +188,7 @@ fact_container({required int index}) {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               image: DecorationImage(
-                  image: AssetImage(fact[index]['image']), fit: BoxFit.cover)),
+                  image: AssetImage(factimage), fit: BoxFit.cover)),
         )),
         Expanded(
             child: Container(
@@ -207,17 +199,19 @@ fact_container({required int index}) {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: icons_bar(
-                  likedatapath: fact[index]['like'],
-                  // dearcount: index,
-                  // dearcount: 0,
-                  likedata: fact[index]['like'],
-                  // onhear_tap: () {},
+                  factimage: factimage,
+                  factlike: factlike,
+                  factsubtitle: factsubtitle,
+                  facttitle: facttitle,
+                  pathindex: index,
+                  likedatapath: factlike,
+                  likedata: factlike,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  "${fact[index]['title']}",
+                  facttitle,
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -239,7 +233,7 @@ fact_container({required int index}) {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  '${fact[index]['subtitle']}',
+                  factsubtitle,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 4,
                   style: TextStyle(fontSize: 20, color: uicolor.fontcolorgrey),
@@ -255,21 +249,33 @@ fact_container({required int index}) {
 
 class icons_bar extends StatefulWidget {
   icons_bar(
-      {
-      // required this.onhear_tap,
-      required,
-      required this.likedata,
+      {required this.likedata,
+      required this.pathindex,
+      required var this.factlike,
+      required String this.facttitle,
+      required var this.factimage,
+      String this.factsubtitle = '',
+      String this.factdiscription = '',
+
       required this.likedatapath});
 
-  // VoidCallback onhear_tap;
   var likedata;
   var likedatapath;
-
+  var pathindex;
+  var factlike;
+  String facttitle;
+  var factimage;
+  var factsubtitle;
+  var factdiscription;
   @override
   State<icons_bar> createState() => _icons_barState();
 }
 
 var newlike;
+// var bookmarkdata;
+// var bookmarkdatapath;
+
+var bookmarkbt = false;
 
 class _icons_barState extends State<icons_bar> {
   @override
@@ -285,10 +291,7 @@ class _icons_barState extends State<icons_bar> {
                 // onPressed: onhear_tap,
                 onPressed: () {
                   setState(() {
-                    // heartap == true ? newlike++ : newlike--;
-
                     heartap = !heartap;
-                    // widget.onhear_tap;
                     widget.likedata = heartap == true
                         ? widget.likedatapath++
                         : widget.likedatapath--;
@@ -323,10 +326,31 @@ class _icons_barState extends State<icons_bar> {
                   size: 28,
                 )),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    bookmarkbt = !bookmarkbt;
+                    if (bookmarkbt == true) {
+                      bookmark.add({
+                        'like': widget.factlike,
+                        'title': widget.facttitle,
+                        'subtitle': widget.factsubtitle,
+                        'image': widget.factimage,
+                        'discription': widget.factdiscription,
+                      });
+                    } else {
+                      bookmark[widget.pathindex]['like'] = null;
+                      bookmark[widget.pathindex]['title'] = null;
+                      bookmark[widget.pathindex]['subtitle'] = null;
+                      bookmark[widget.pathindex]['image'] = null;
+                      bookmark[widget.pathindex]['discription'] = null;
+                    }
+                  });
+                },
                 icon: Icon(
-                  CupertinoIcons.bookmark,
-                  color: uicolor.icongrey,
+                  bookmarkbt == false
+                      ? CupertinoIcons.bookmark
+                      : CupertinoIcons.bookmark_fill,
+                  color: bookmarkbt == false ? uicolor.icongrey : Colors.black,
                   size: 28,
                 )),
             IconButton(

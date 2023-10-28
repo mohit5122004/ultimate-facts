@@ -1,37 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ultimate_fact_app/database/database.dart';
+// import 'package:ultimate_fact_app/database/database.dart';
 import 'package:ultimate_fact_app/screens/list_page.dart';
 import 'package:ultimate_fact_app/screens/home_page.dart';
 
 var runners;
 
-class indexrun {
-  static runner() {
-    int i = 0;
-    while (i < home_Screen_facts_data.length) {
-      runners = i;
-      return runners + i;
-    }
-    i++;
-  }
-}
-
 // ignore: must_be_immutable
 class facts_page_view extends StatelessWidget {
   facts_page_view(
       {super.key,
-      required this.facttitle,
-      // required this.heartcount,
-      required this.factdiscription,
-      required this.index_page,
-      required this.factlike,
-      required this.factimage});
+      this.facttitle = '',
+      this.factdiscription,
+      this.factlike = '',
+      required this.indexpath,
+      required this.routeonback,
+      this.factimage});
   var facttitle;
   var factimage;
+  var routeonback;
   var factdiscription;
-  // var heartcount;
-  var index_page;
+  var indexpath;
+
   var factlike;
   @override
   Widget build(BuildContext context) {
@@ -47,9 +37,7 @@ class facts_page_view extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(context, MaterialPageRoute(
                   builder: (context) {
-                    return facts_Listview(
-                      index: index_page,
-                    );
+                    return routeonback;
                   },
                 ));
               },
@@ -81,11 +69,13 @@ class facts_page_view extends StatelessWidget {
               padding: EdgeInsets.all(15),
               child: Column(
                 children: [
-                  icons_bar(likedatapath: factlike,
+                  icons_bar(
+                    factimage: factimage,
+                    factlike: factlike,
+                    facttitle: facttitle,
+                    pathindex: indexpath,
+                    likedatapath: factlike,factdiscription:factdiscription ,
                     likedata: factlike,
-                    // onhear_tap: () {
-
-                    // },
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10),

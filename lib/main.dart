@@ -34,7 +34,7 @@ class HomePageState extends State<HomePage> {
     Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => home_page()));
-    });
+    });    
   }
 
   @override
