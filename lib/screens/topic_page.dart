@@ -4,7 +4,8 @@ import 'package:ultimate_fact_app/database/database.dart';
 import 'package:ultimate_fact_app/screens/home_page.dart';
 // import 'package:ultimate_fact_app/home_page/fact_page.dart';
 import 'package:ultimate_fact_app/screens/list_page.dart';
-
+import 'package:ultimate_fact_app/database/Colors.dart';
+import 'package:ultimate_fact_app/screens/settings_page.dart';
 // facts_Listview facts_container = facts_Listview();
 
 class topic_grid extends StatefulWidget {
@@ -17,7 +18,9 @@ class topic_grid extends StatefulWidget {
 class _topic_gridState extends State<topic_grid> {
   @override
   Widget build(BuildContext context) {
+    settingcolor;
     return Scaffold(
+      backgroundColor: uicolor.backgroundColor,
       appBar: AppBar(
         leading: Text(''),
         leadingWidth: 0,
@@ -25,10 +28,10 @@ class _topic_gridState extends State<topic_grid> {
         title: Center(
           child: Text(
             "Topics",
-            style: TextStyle(color: Colors.black38, fontSize: 25),
+            style: TextStyle(color: uicolor.title, fontSize: 25),
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: uicolor.backgroundColor,
       ),
       body: Stack(
         children: [
@@ -40,7 +43,7 @@ class _topic_gridState extends State<topic_grid> {
                   TextField(
                     decoration: InputDecoration(
                         filled: true,
-                        fillColor: Colors.grey.withOpacity(0.3),
+                        fillColor: uicolor.textfild,
                         prefixIcon: Container(
                           margin: const EdgeInsets.only(left: 20, right: 15),
                           child: Icon(
@@ -97,7 +100,9 @@ class _topic_gridState extends State<topic_grid> {
                             Text(
                               topic_image[index]['title'],
                               style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: uicolor.title),
                             )
                           ],
                         );

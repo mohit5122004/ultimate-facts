@@ -11,6 +11,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Center(
         child: Container(
           height: 400,

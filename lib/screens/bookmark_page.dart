@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ultimate_fact_app/screens/facts_page.dart';
 import 'package:ultimate_fact_app/screens/home_page.dart';
 import 'package:ultimate_fact_app/screens/list_page.dart';
+import 'package:ultimate_fact_app/database/Colors.dart';
 
 class bookmark_page extends StatefulWidget {
   const bookmark_page({super.key});
@@ -16,9 +17,11 @@ class _bookmark_pageState extends State<bookmark_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: uicolor.backgroundColor,
       appBar: AppBar(
         leadingWidth: 0,
-        backgroundColor: Colors.white,
+        leading: Text(''),
+        backgroundColor: uicolor.backgroundColor,
         elevation: 0,
         title: Center(
           child: Text(
@@ -43,7 +46,7 @@ class _bookmark_pageState extends State<bookmark_page> {
                                 Navigator.push(context, MaterialPageRoute(
                                   builder: (context) {
                                     return facts_page_view(
-                                      factdiscription:bookmark[index]
+                                      factdiscription: bookmark[index]
                                           ['discription'],
                                       factlike: bookmark[index]['like'],
                                       factimage: bookmark[index]['image'],
@@ -55,7 +58,7 @@ class _bookmark_pageState extends State<bookmark_page> {
                                 ));
                               },
                               child: fact_container(
-                                  index: index,
+                                  indexs: index,
                                   factlike: bookmark[index]['like'],
                                   facttitle: bookmark[index]['title'],
                                   factimage: bookmark[index]['image'],

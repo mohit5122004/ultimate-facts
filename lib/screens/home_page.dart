@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 // import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ultimate_fact_app/database/database.dart';
@@ -11,12 +12,7 @@ import 'package:ultimate_fact_app/screens/settings_page.dart';
 // import 'package:ultimate_fact_app/database/database.dart';
 // import 'package:ultimate_fact_app/screens/list_page.dart';
 import 'package:ultimate_fact_app/screens/topic_page.dart';
-
-class uicolor {
-  static Color icongrey = Colors.grey;
-  static Color textgrey = Colors.grey;
-  static Color fontcolorgrey = Colors.black38;
-}
+import 'package:ultimate_fact_app/database/Colors.dart';
 
 var like = 0;
 var heartcolor = Colors.pinkAccent;
@@ -34,15 +30,18 @@ class home_page extends StatefulWidget {
 class _home_pageState extends State<home_page> {
   @override
   Widget build(BuildContext context) {
+    settingcolor;
     return Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
           leadingWidth: 0,
           elevation: 0,
-          backgroundColor: Colors.white,
+          leading: Text(''),
+          backgroundColor: uicolor.backgroundColor,
           title: Center(
             child: Text(
               'Ultimate Facts Pro',
-              style: TextStyle(fontSize: 23, color: Colors.black38),
+              style: TextStyle(fontSize: 25, color: uicolor.title),
             ),
           ),
         ),
@@ -62,10 +61,10 @@ class home_page_list extends StatefulWidget {
 }
 
 class _home_page_listState extends State<home_page_list> {
-  var newlike = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: uicolor.backgroundColor,
       body: Column(
         children: [
           Expanded(
@@ -101,7 +100,7 @@ class _home_page_listState extends State<home_page_list> {
                       width: double.infinity,
                       margin: EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: uicolor.factcontainer,
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black.withOpacity(0.4),
@@ -156,6 +155,7 @@ class _home_page_listState extends State<home_page_list> {
                                     home_Screen_facts_data[index]['title'],
                                     style: TextStyle(
                                         fontSize: 25,
+                                        color: uicolor.ftitle,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
@@ -167,12 +167,12 @@ class _home_page_listState extends State<home_page_list> {
                                     padding: EdgeInsets.symmetric(
                                         vertical: 2, horizontal: 10),
                                     decoration: BoxDecoration(
-                                        color: Colors.grey.withOpacity(0.34),
+                                        color: uicolor.readbg,
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                     child: Text(
                                       'Less Then 1 min.read',
-                                      style: TextStyle(color: Colors.black38),
+                                      style: TextStyle(color: uicolor.readline),
                                     ),
                                   ),
                                 ),
@@ -184,8 +184,7 @@ class _home_page_listState extends State<home_page_list> {
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 4,
                                     style: TextStyle(
-                                        fontSize: 20,
-                                        color: uicolor.fontcolorgrey),
+                                        fontSize: 20, color: uicolor.subtitle),
                                   ),
                                 ),
                               ],
@@ -221,67 +220,119 @@ class _bottom_navigationState extends State<bottom_navigation> {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        color: Colors.white,
+        color: uicolor.backgroundColor,
         height: 70,
         // width: 300,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  Navigator.pushReplacement(context, MaterialPageRoute(
-                    builder: (context) {
-                      return home_page();
-                    },
-                  ));
-                });
-              },
-              icon: Icon(
-                CupertinoIcons.home,
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pushReplacement(context, MaterialPageRoute(
+                        builder: (context) {
+                          return home_page();
+                        },
+                      ));
+                    });
+                  },
+                  icon: Icon(
+                    CupertinoIcons.home,
+                    color: uicolor.navicon,
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 5),
+                  child: Text(
+                    'Home',
+                    style: TextStyle(color: uicolor.navicon),
+                  ),
+                ),
+              ],
             ),
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  Navigator.pushReplacement(context, MaterialPageRoute(
-                    builder: (context) {
-                      return topic_grid();
-                    },
-                  ));
-                });
-              },
-              icon: Icon(
-                CupertinoIcons.square_list,
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pushReplacement(context, MaterialPageRoute(
+                        builder: (context) {
+                          return topic_grid();
+                        },
+                      ));
+                    });
+                  },
+                  icon: Icon(
+                    CupertinoIcons.square_list,
+                    color: uicolor.navicon,
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 5),
+                  child: Text(
+                    'Topics',
+                    style: TextStyle(color: uicolor.navicon),
+                  ),
+                ),
+              ],
             ),
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  Navigator.pushReplacement(context, MaterialPageRoute(
-                    builder: (context) {
-                      return bookmark_page();
-                    },
-                  ));
-                });
-              },
-              icon: Icon(
-                CupertinoIcons.bookmark,
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pushReplacement(context, MaterialPageRoute(
+                        builder: (context) {
+                          return bookmark_page();
+                        },
+                      ));
+                    });
+                  },
+                  icon: Icon(
+                    CupertinoIcons.bookmark,
+                    color: uicolor.navicon,
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 5),
+                  child: Text(
+                    'Bookmark',
+                    style: TextStyle(color: uicolor.navicon),
+                  ),
+                ),
+              ],
             ),
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  Navigator.pushReplacement(context, MaterialPageRoute(
-                    builder: (context) {
-                      return setting_page();
-                    },
-                  ));
-                });
-              },
-              icon: Icon(
-                CupertinoIcons.settings,
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pushReplacement(context, MaterialPageRoute(
+                        builder: (context) {
+                          return setting_page();
+                        },
+                      ));
+                    });
+                  },
+                  icon: Icon(
+                    CupertinoIcons.settings,
+                    color: uicolor.navicon,
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 5),
+                  child: Text(
+                    'Settings',
+                    style: TextStyle(color: uicolor.navicon),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

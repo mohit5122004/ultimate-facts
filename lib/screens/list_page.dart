@@ -2,11 +2,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ultimate_fact_app/database/Colors.dart';
 import 'package:ultimate_fact_app/database/database.dart';
+// import 'package:ultimate_fact_app/database/database.dart';
 import 'package:ultimate_fact_app/screens/bookmark_page.dart';
 import 'package:ultimate_fact_app/screens/facts_page.dart';
 // import 'package:ultimate_fact_app/screens/topic_page.dart';
 import 'package:ultimate_fact_app/screens/home_page.dart';
+import 'package:ultimate_fact_app/screens/settings_page.dart';
 import 'package:ultimate_fact_app/screens/topic_page.dart';
 
 class facts_Listview extends StatefulWidget {
@@ -69,17 +72,19 @@ class _facts_ListviewState extends State<facts_Listview> {
     fact = fact_data[0]
         [topicindex < topicilist.length ? topicilist[topicindex] : "uk"];
     factlenth = fact_data[0][topicilist[topicindex]].length;
-
+    settingcolor;
     return Scaffold(
+      backgroundColor: uicolor.backgroundColor,
       appBar: AppBar(
+        foregroundColor: uicolor.title,
         elevation: 0,
         title: Center(
           child: Text(
             'Topic Search',
-            style: TextStyle(color: Colors.black38, fontSize: 25),
+            style: TextStyle(color: uicolor.title, fontSize: 25),
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: uicolor.backgroundColor,
         leading: IconButton(
           onPressed: () {
             setState(() {
@@ -92,7 +97,7 @@ class _facts_ListviewState extends State<facts_Listview> {
           },
           icon: Icon(
             CupertinoIcons.back,
-            color: Colors.black,
+            color: uicolor.navicon,
             size: 25,
           ),
         ),
@@ -110,19 +115,17 @@ class _facts_ListviewState extends State<facts_Listview> {
                     builder: (context) {
                       return facts_page_view(
                           indexpath: index,
-                          routeonback: facts_Listview(
-                            index: index,
-                          ),
+                          routeonback: topic_grid(),
                           factlike: fact[index]['like'],
                           facttitle: fact[index]['title'],
-                          factdiscription: fact[index]['discription'],
+                          factdiscription: fact[ index]['discription'],
                           factimage: fact[index]['image']);
                     },
                   ));
                 });
               },
               child: fact_container(
-                  index: index,
+                  indexs: index,
                   factimage: fact[index]['image'],
                   factlike: fact[index]['like'],
                   factsubtitle: fact[index]['subtitle'],
@@ -160,11 +163,10 @@ class _facts_ListviewState extends State<facts_Listview> {
 }
 
 fact_container(
-    {required int index,
+    {required int indexs,
     required var factlike,
     required String facttitle,
     required var factimage,
-    
     required var factsubtitle,
     VoidCallback? bookmark_remove}) {
   return Container(
@@ -172,7 +174,7 @@ fact_container(
     width: double.infinity,
     margin: EdgeInsets.all(15),
     decoration: BoxDecoration(
-        color: Colors.white,
+        color: uicolor.factcontainer,
         boxShadow: [
           BoxShadow(
               color: Colors.black.withOpacity(0.4),
@@ -203,7 +205,7 @@ fact_container(
                   factlike: factlike,
                   factsubtitle: factsubtitle,
                   facttitle: facttitle,
-                  pathindex: index,
+                  pathindex: indexs,
                   likedatapath: factlike,
                   likedata: factlike,
                 ),
@@ -212,7 +214,10 @@ fact_container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   facttitle,
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: uicolor.ftitle),
                 ),
               ),
               SizedBox(height: 10),
@@ -221,11 +226,11 @@ fact_container(
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 2, horizontal: 10),
                   decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.34),
+                      color: uicolor.readbg,
                       borderRadius: BorderRadius.circular(20)),
                   child: Text(
                     'Less Then 1 min.read',
-                    style: TextStyle(color: Colors.black38),
+                    style: TextStyle(color: uicolor.readline),
                   ),
                 ),
               ),
@@ -236,7 +241,7 @@ fact_container(
                   factsubtitle,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 4,
-                  style: TextStyle(fontSize: 20, color: uicolor.fontcolorgrey),
+                  style: TextStyle(fontSize: 20, color: uicolor.subtitle),
                 ),
               )
             ],
@@ -256,7 +261,6 @@ class icons_bar extends StatefulWidget {
       required var this.factimage,
       String this.factsubtitle = '',
       String this.factdiscription = '',
-
       required this.likedatapath});
 
   var likedata;
@@ -311,7 +315,7 @@ class _icons_barState extends State<icons_bar> {
               widget.likedatapath.toString(),
               style: TextStyle(
                   fontSize: 22,
-                  color: uicolor.textgrey,
+                  color: uicolor.liketext,
                   fontWeight: FontWeight.bold),
             ),
           ],
@@ -350,7 +354,9 @@ class _icons_barState extends State<icons_bar> {
                   bookmarkbt == false
                       ? CupertinoIcons.bookmark
                       : CupertinoIcons.bookmark_fill,
-                  color: bookmarkbt == false ? uicolor.icongrey : Colors.black,
+                  color: bookmarkbt == false
+                      ? uicolor.icongrey
+                      : uicolor.bookmarkicon,
                   size: 28,
                 )),
             IconButton(

@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:ultimate_fact_app/database/database.dart';
 import 'package:ultimate_fact_app/screens/list_page.dart';
-import 'package:ultimate_fact_app/screens/home_page.dart';
+// import 'package:ultimate_fact_app/screens/home_page.dart';
+import 'package:ultimate_fact_app/database/Colors.dart';
 
 var runners;
 
@@ -26,13 +27,14 @@ class facts_page_view extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: uicolor.backgroundColor,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             leading: IconButton(
               icon: Icon(
                 CupertinoIcons.back,
-                color: Colors.black,
+                color: uicolor.navicon,
               ),
               onPressed: () {
                 Navigator.pushReplacement(context, MaterialPageRoute(
@@ -42,19 +44,19 @@ class facts_page_view extends StatelessWidget {
                 ));
               },
             ),
-            toolbarTextStyle: TextStyle(color: Colors.black),
-            backgroundColor: Colors.white,
+            toolbarTextStyle: TextStyle(color: uicolor.title),
+            backgroundColor: uicolor.backgroundColor,
             elevation: 0,
             pinned: true,
             centerTitle: false,
             stretch: true,
             expandedHeight: 300,
-            titleTextStyle: TextStyle(color: Colors.black),
+            titleTextStyle: TextStyle(color: Colors.black38),
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 facttitle,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: uicolor.title.withOpacity(1),
                 ),
               ),
               background: Image(
@@ -74,7 +76,8 @@ class facts_page_view extends StatelessWidget {
                     factlike: factlike,
                     facttitle: facttitle,
                     pathindex: indexpath,
-                    likedatapath: factlike,factdiscription:factdiscription ,
+                    likedatapath: factlike,
+                    factdiscription: factdiscription,
                     likedata: factlike,
                   ),
                   Padding(
@@ -84,7 +87,7 @@ class facts_page_view extends StatelessWidget {
                       textAlign: TextAlign.justify,
                       style: TextStyle(
                         fontSize: 20,
-                        color: uicolor.fontcolorgrey,
+                        color: uicolor.discription,
                       ),
                     ),
                   ),
