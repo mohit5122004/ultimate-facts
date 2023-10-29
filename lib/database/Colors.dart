@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:ultimate_fact_app/screens/settings_page.dart';
 
 class uicolor {
   static Color icongrey = Colors.grey;
