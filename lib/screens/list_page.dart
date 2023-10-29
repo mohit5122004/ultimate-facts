@@ -2,10 +2,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ultimate_fact_app/database/Colors.dart';
 import 'package:ultimate_fact_app/database/database.dart';
+// import 'package:ultimate_fact_app/database/database.dart';
+import 'package:ultimate_fact_app/screens/bookmark_page.dart';
 import 'package:ultimate_fact_app/screens/facts_page.dart';
 // import 'package:ultimate_fact_app/screens/topic_page.dart';
 import 'package:ultimate_fact_app/screens/home_page.dart';
+import 'package:ultimate_fact_app/screens/settings_page.dart';
 import 'package:ultimate_fact_app/screens/topic_page.dart';
 
 class facts_Listview extends StatefulWidget {
@@ -15,9 +19,9 @@ class facts_Listview extends StatefulWidget {
     this.factimage,
     this.facttitle,
     required this.index,
-    this.heartcount,
+    // this.heartcount,
   });
-  var heartcount;
+  // var heartcount;
   var facttitle;
   var factdiscription;
   var factimage;
@@ -25,39 +29,15 @@ class facts_Listview extends StatefulWidget {
   @override
   State<facts_Listview> createState() => _facts_ListviewState();
 }
-// class listrunner{
-// runner(){
-// final fact = fact_data[index]['kids'][0];
-// }
-// }
-
-// class topic_logic {
-//  static topic({required var index}) {
-//   }
-// }
-
-// for (int i = 0; i < fact_data[0].length; i++) {
-//       fact_data.forEach((entry) {
-//         entry.forEach((key, _) {
-//           print('$key');
-//           if (widget.index == i) {
-//             fact = fact_data[0]["$key"];
-//             factlenth = fact_data[0]['$key'];
-//             print(key);
-//           }
-//         });
-//       });
-//     }
 
 var fact;
 var factlenth;
 
 class _facts_ListviewState extends State<facts_Listview> {
-  int newlike = 200;
   @override
   Widget build(BuildContext context) {
     fact;
-    final categoryList = [
+    final topicilist = [
       'apple',
       'art',
       'astalia',
@@ -88,22 +68,23 @@ class _facts_ListviewState extends State<facts_Listview> {
       'uk',
     ];
 
-    final categoryIndex = widget.index;
-    fact = fact_data[0][categoryIndex < categoryList.length
-        ? categoryList[categoryIndex]
-        : "uk"];
-    factlenth = fact_data[0][categoryList[categoryIndex]].length;
-
+    final topicindex = widget.index;
+    fact = fact_data[0]
+        [topicindex < topicilist.length ? topicilist[topicindex] : "uk"];
+    factlenth = fact_data[0][topicilist[topicindex]].length;
+    settingcolor;
     return Scaffold(
+      backgroundColor: uicolor.backgroundColor,
       appBar: AppBar(
+        foregroundColor: uicolor.title,
         elevation: 0,
         title: Center(
           child: Text(
             'Topic Search',
-            style: TextStyle(color: Colors.black38, fontSize: 25),
+            style: TextStyle(color: uicolor.title, fontSize: 25),
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: uicolor.backgroundColor,
         leading: IconButton(
           onPressed: () {
             setState(() {
@@ -116,7 +97,7 @@ class _facts_ListviewState extends State<facts_Listview> {
           },
           icon: Icon(
             CupertinoIcons.back,
-            color: Colors.black,
+            color: uicolor.navicon,
             size: 25,
           ),
         ),
@@ -133,16 +114,22 @@ class _facts_ListviewState extends State<facts_Listview> {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
                       return facts_page_view(
-                          index_page: index,
-                          heartcount: index,
+                          indexpath: index,
+                          routeonback: topic_grid(),
+                          factlike: fact[index]['like'],
                           facttitle: fact[index]['title'],
-                          factdiscription: fact[index]['discription'],
+                          factdiscription: fact[ index]['discription'],
                           factimage: fact[index]['image']);
                     },
                   ));
                 });
               },
-              child: color_container(index: index),
+              child: fact_container(
+                  indexs: index,
+                  factimage: fact[index]['image'],
+                  factlike: fact[index]['like'],
+                  factsubtitle: fact[index]['subtitle'],
+                  facttitle: fact[index]['title']),
             ),
           );
         },
@@ -175,13 +162,19 @@ class _facts_ListviewState extends State<facts_Listview> {
   }
 }
 
-fact_container({required int index}) {
+fact_container(
+    {required int indexs,
+    required var factlike,
+    required String facttitle,
+    required var factimage,
+    required var factsubtitle,
+    VoidCallback? bookmark_remove}) {
   return Container(
     height: 480,
     width: double.infinity,
     margin: EdgeInsets.all(15),
     decoration: BoxDecoration(
-        color: Colors.white,
+        color: uicolor.factcontainer,
         boxShadow: [
           BoxShadow(
               color: Colors.black.withOpacity(0.4),
@@ -197,7 +190,7 @@ fact_container({required int index}) {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               image: DecorationImage(
-                  image: AssetImage(fact[index]['image']), fit: BoxFit.cover)),
+                  image: AssetImage(factimage), fit: BoxFit.cover)),
         )),
         Expanded(
             child: Container(
@@ -208,14 +201,23 @@ fact_container({required int index}) {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: icons_bar(
-                  dearcount: index,
+                  factimage: factimage,
+                  factlike: factlike,
+                  factsubtitle: factsubtitle,
+                  facttitle: facttitle,
+                  pathindex: indexs,
+                  likedatapath: factlike,
+                  likedata: factlike,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  "${fact[index]['title']}",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  facttitle,
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: uicolor.ftitle),
                 ),
               ),
               SizedBox(height: 10),
@@ -224,11 +226,11 @@ fact_container({required int index}) {
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 2, horizontal: 10),
                   decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.34),
+                      color: uicolor.readbg,
                       borderRadius: BorderRadius.circular(20)),
                   child: Text(
                     'Less Then 1 min.read',
-                    style: TextStyle(color: Colors.black38),
+                    style: TextStyle(color: uicolor.readline),
                   ),
                 ),
               ),
@@ -236,10 +238,10 @@ fact_container({required int index}) {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  '${fact[index]['subtitle']}',
+                  factsubtitle,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 4,
-                  style: TextStyle(fontSize: 20, color: uicolor.fontcolorgrey),
+                  style: TextStyle(fontSize: 20, color: uicolor.subtitle),
                 ),
               )
             ],
@@ -251,19 +253,35 @@ fact_container({required int index}) {
 }
 
 class icons_bar extends StatefulWidget {
-  icons_bar({
-    required this.dearcount,
-    // required this.onhear_tap,
-  });
+  icons_bar(
+      {required this.likedata,
+      required this.pathindex,
+      required var this.factlike,
+      required String this.facttitle,
+      required var this.factimage,
+      String this.factsubtitle = '',
+      String this.factdiscription = '',
+      required this.likedatapath});
 
-  int dearcount = 0;
-  // VoidCallback onhear_tap;
+  var likedata;
+  var likedatapath;
+  var pathindex;
+  var factlike;
+  String facttitle;
+  var factimage;
+  var factsubtitle;
+  var factdiscription;
   @override
   State<icons_bar> createState() => _icons_barState();
 }
 
+var newlike;
+// var bookmarkdata;
+// var bookmarkdatapath;
+
+var bookmarkbt = false;
+
 class _icons_barState extends State<icons_bar> {
-  int newlike = 100;
   @override
   Widget build(
     BuildContext context,
@@ -274,17 +292,14 @@ class _icons_barState extends State<icons_bar> {
         Row(
           children: [
             IconButton(
+                // onPressed: onhear_tap,
                 onPressed: () {
                   setState(() {
                     heartap = !heartap;
-                    // heartap == true ? newlike++ : newlike--;
-                    for (int i = 0; i < fact_data[0]['kids'].length; i++) {
-                      heartap == true
-                          ? fact_data[0]['kids'][i]['like']++
-                          : fact_data[0]['kids']['like']--;
-                    }
-
-                    // widget.onhear_tap;
+                    widget.likedata = heartap == true
+                        ? widget.likedatapath++
+                        : widget.likedatapath--;
+                    widget.likedata = widget.likedatapath;
                   });
                 },
                 splashRadius: 10,
@@ -297,10 +312,10 @@ class _icons_barState extends State<icons_bar> {
                   size: 30,
                 )),
             Text(
-              home_Screen_facts_data[widget.dearcount]['like'].toString(),
+              widget.likedatapath.toString(),
               style: TextStyle(
                   fontSize: 22,
-                  color: uicolor.textgrey,
+                  color: uicolor.liketext,
                   fontWeight: FontWeight.bold),
             ),
           ],
@@ -315,10 +330,33 @@ class _icons_barState extends State<icons_bar> {
                   size: 28,
                 )),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    bookmarkbt = !bookmarkbt;
+                    if (bookmarkbt == true) {
+                      bookmark.add({
+                        'like': widget.factlike,
+                        'title': widget.facttitle,
+                        'subtitle': widget.factsubtitle,
+                        'image': widget.factimage,
+                        'discription': widget.factdiscription,
+                      });
+                    } else {
+                      bookmark[widget.pathindex]['like'] = null;
+                      bookmark[widget.pathindex]['title'] = null;
+                      bookmark[widget.pathindex]['subtitle'] = null;
+                      bookmark[widget.pathindex]['image'] = null;
+                      bookmark[widget.pathindex]['discription'] = null;
+                    }
+                  });
+                },
                 icon: Icon(
-                  CupertinoIcons.bookmark,
-                  color: uicolor.icongrey,
+                  bookmarkbt == false
+                      ? CupertinoIcons.bookmark
+                      : CupertinoIcons.bookmark_fill,
+                  color: bookmarkbt == false
+                      ? uicolor.icongrey
+                      : uicolor.bookmarkicon,
                   size: 28,
                 )),
             IconButton(
@@ -334,10 +372,3 @@ class _icons_barState extends State<icons_bar> {
     );
   }
 }
-
-//  heartcount: index,
-//                           facttitle: home_Screen_facts_data[index]['title'],
-//                           factdiscription: home_Screen_facts_data[index]
-//                               ['discription'],
-//                           factimage: home_Screen_facts_data[index]['image']
-

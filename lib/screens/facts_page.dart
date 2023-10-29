@@ -1,70 +1,62 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ultimate_fact_app/database/database.dart';
+// import 'package:ultimate_fact_app/database/database.dart';
 import 'package:ultimate_fact_app/screens/list_page.dart';
-import 'package:ultimate_fact_app/screens/home_page.dart';
+// import 'package:ultimate_fact_app/screens/home_page.dart';
+import 'package:ultimate_fact_app/database/Colors.dart';
 
 var runners;
-
-class indexrun {
-  static runner() {
-    int i = 0;
-    while (i < home_Screen_facts_data.length) {
-      runners = i;
-      return runners + i;
-    }
-    i++;
-  }
-}
 
 // ignore: must_be_immutable
 class facts_page_view extends StatelessWidget {
   facts_page_view(
       {super.key,
-      required this.facttitle,
-      required this.heartcount,
-      required this.factdiscription,
-      required this.index_page,
-      required this.factimage});
+      this.facttitle = '',
+      this.factdiscription,
+      this.factlike = '',
+      required this.indexpath,
+      required this.routeonback,
+      this.factimage});
   var facttitle;
   var factimage;
+  var routeonback;
   var factdiscription;
-  var heartcount;
-  var index_page;
+  var indexpath;
+
+  var factlike;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: uicolor.backgroundColor,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             leading: IconButton(
               icon: Icon(
                 CupertinoIcons.back,
-                color: Colors.black,
+                color: uicolor.navicon,
               ),
               onPressed: () {
                 Navigator.pushReplacement(context, MaterialPageRoute(
                   builder: (context) {
-                    return facts_Listview(
-                      index: index_page,
-                    );
+                    return routeonback;
                   },
                 ));
               },
             ),
-            toolbarTextStyle: TextStyle(color: Colors.black),
-            backgroundColor: Colors.white,
+            toolbarTextStyle: TextStyle(color: uicolor.title),
+            backgroundColor: uicolor.backgroundColor,
             elevation: 0,
             pinned: true,
             centerTitle: false,
             stretch: true,
             expandedHeight: 300,
-            titleTextStyle: TextStyle(color: Colors.black),
+            titleTextStyle: TextStyle(color: Colors.black38),
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 facttitle,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: uicolor.title.withOpacity(1),
                 ),
               ),
               background: Image(
@@ -80,7 +72,13 @@ class facts_page_view extends StatelessWidget {
               child: Column(
                 children: [
                   icons_bar(
-                    dearcount: heartcount,
+                    factimage: factimage,
+                    factlike: factlike,
+                    facttitle: facttitle,
+                    pathindex: indexpath,
+                    likedatapath: factlike,
+                    factdiscription: factdiscription,
+                    likedata: factlike,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10),
@@ -89,7 +87,7 @@ class facts_page_view extends StatelessWidget {
                       textAlign: TextAlign.justify,
                       style: TextStyle(
                         fontSize: 20,
-                        color: uicolor.fontcolorgrey,
+                        color: uicolor.discription,
                       ),
                     ),
                   ),
@@ -97,7 +95,7 @@ class facts_page_view extends StatelessWidget {
                 ],
               ),
             )
-          ]))
+          ])),
         ],
       ),
     );
